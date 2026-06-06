@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  
+  --color-panel-light: rgba(255, 255, 255, 0.75);
+  --color-panel-dark: rgba(15, 23, 42, 0.85);
+  
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom class-based dark mode variant for Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafbfd;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-muted: #64748b;
+  --header-bg: rgba(250, 251, 253, 0.8);
+  --grid-bg: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #090d16;
+  --foreground: #f8fafc;
+  --card-bg: #0f172a;
+  --border-color: #1e293b;
+  --text-muted: #94a3b8;
+  --header-bg: rgba(9, 13, 22, 0.8);
+  --grid-bg: #0e1320;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-display);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Custom styling for CSS and Tailwind code fields */
+.code-textarea {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+/* Dynamic background animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.15;
+  }
+  33% {
+    transform: scale(1.1) translate(30px, -50px);
+    opacity: 0.2;
+  }
+  66% {
+    transform: scale(0.95) translate(-20px, 20px);
+    opacity: 0.1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-glow-purple {
+  animation: pulseGlow 15s infinite ease-in-out;
+}
+
+.bg-glow-blue {
+  animation: pulseGlow 18s infinite ease-in-out 2s;
 }

@@ -1,64 +1,58 @@
-import Image from "next/image";
+import { Metadata } from 'next';
+import ConverterGrid from '@/components/Converter/ConverterGrid';
+import SEOContent from '@/components/SEO/SEOContent';
+import EmailCapture from '@/components/Common/EmailCapture';
+
+export const metadata: Metadata = {
+  title: 'Free CSS to Tailwind Converter (Instant Tailwind Class Generator)',
+  description: 'Convert standard CSS or inline styles to Tailwind CSS utility classes online instantly. Free tool, no login required, 100% secure client-side processing. Includes reverse Tailwind-to-CSS conversion.',
+  keywords: [
+    'CSS to Tailwind converter',
+    'convert CSS to Tailwind',
+    'Tailwind class generator',
+    'CSS to Tailwind online',
+    'Tailwind converter tool',
+    'Tailwind CSS v4 converter'
+  ],
+  openGraph: {
+    title: 'Free CSS to Tailwind Converter',
+    description: 'Instant Tailwind CSS utility class generator. Parse CSS stylesheets or inline rules back-and-forth locally in your browser.',
+    type: 'website',
+    url: 'https://css-to-tailwind.com'
+  }
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="relative w-full min-h-screen pb-16">
+      
+      {/* Decorative Glow Elements */}
+      <div className="absolute top-[10%] left-[5%] -z-10 h-72 w-72 rounded-full bg-blue-400/5 dark:bg-blue-500/5 blur-3xl bg-glow-blue"></div>
+      <div className="absolute top-[25%] right-[5%] -z-10 h-80 w-80 rounded-full bg-purple-400/5 dark:bg-purple-500/5 blur-3xl bg-glow-purple"></div>
+
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-10">
+        
+        {/* Hero Header Section */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <h1 className="text-3xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-4xl md:text-5xl">
+            Free CSS to Tailwind <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Converter</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-sm md:text-base text-[var(--text-muted)] leading-relaxed">
+            Migrating your codebase to Tailwind CSS? Paste your traditional stylesheet rules or inline declarations below. Get clean utility classes, custom spacing scales, and step-by-step explanations instantly.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Master Converter Workspace Grid */}
+        <ConverterGrid />
+
+        {/* Email Lead Capture Sheet */}
+        <div className="mt-8">
+          <EmailCapture />
         </div>
+
+        {/* Dynamic SEO Informative Section */}
+        <SEOContent />
+
       </main>
     </div>
   );
